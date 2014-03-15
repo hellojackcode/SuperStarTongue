@@ -7,10 +7,30 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
-
-    <TextView
-        android:layout_width="wrap_content"
+	
+    <LinearLayout
+        android:id="@+id/commonLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-
+        android:orientation="vertical"
+        >
+	    <Button
+	        android:id="@+id/startRecordBtn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/start_record" 
+	        />
+	    <Button
+	        android:id="@+id/resetText"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/reset_text"
+	        />
+	    <TextView 
+	        android:id="@+id/recogText"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text=""
+	        />
+	</LinearLayout>
 </RelativeLayout>
