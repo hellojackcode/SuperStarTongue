@@ -6,7 +6,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.view.Menu;
 import android.view.View;
@@ -18,6 +17,9 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 	private final int SST_SPH = 1000;
 	protected TextView recogText;
+	protected TextView sentenceText;
+	protected TextView rateText;
+	
 	public Context mContext = null;		// 메인 액티비티값을 저장 
 	
 	@Override
@@ -25,7 +27,8 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		mContext = this;
 		setContentView(R.layout.activity_main);
-	
+		
+		// 발음하기 버튼 
 		Button startRecordBtn = (Button) findViewById(R.id.startRecordBtn);
 		startRecordBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -34,7 +37,11 @@ public class MainActivity extends Activity {
 		});
 		
 		recogText = (TextView) findViewById(R.id.recogText);
+		sentenceText = (TextView) findViewById(R.id.sentenceText);
+		sentenceText.setText(getSentence());
+		rateText = (TextView) findViewById(R.id.rateText);
 		
+		// 초기화 버튼 
 		Button resetText = (Button) findViewById(R.id.resetText);
 		resetText.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -42,6 +49,18 @@ public class MainActivity extends Activity {
 			}
 		});
 		
+	}
+	
+	// 발음할 문자열을 가져 옴(추후에 클래스로 떼어내야 할 듯)
+	protected String getSentence() {
+		String rtnSentence = "";
+		
+		// 추후에는 DB에서 가져오는 걸로 바꿔야 할 부분임.
+		String sentence = "경찰청 쇠창살 외철창, 검찰청 쇠창살 쌍철창";
+		rtnSentence = sentence.replaceAll("\\p{Space}", "");
+		
+		return sentence;
+		//return rtnSentence;
 	}
 
 	@Override
@@ -92,9 +111,15 @@ public class MainActivity extends Activity {
 		mResult = data.getStringArrayListExtra(key);
 		String[] result = new String[mResult.size()];
 		mResult.toArray(result);
+		
+		recogText.setText(result[0]);
+		
+		
+		/*
 		for(int i=0; i < mResult.size(); i++) {
 			recogText.append(result[i] + "\n");
 		}
+		*/
 	}
 
 	@Override

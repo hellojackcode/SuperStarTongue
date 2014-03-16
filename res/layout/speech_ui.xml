@@ -4,6 +4,14 @@
     android:layout_height="match_parent"
 	android:background="#ff888888"
 	>
+	<TextView
+	    android:id="@+id/sentence"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/sample_sentence"
+	    android:textColor="#ff000000"
+	    android:textSize="24sp"
+	   />
 	<ProgressBar 
 	    android:id="@+id/progress"
 	    android:layout_width="64dp"

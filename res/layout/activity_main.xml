@@ -14,23 +14,62 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
-	    <Button
-	        android:id="@+id/startRecordBtn"
-	        android:layout_width="wrap_content"
+        <RelativeLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+		    <Button
+		        android:id="@+id/startRecordBtn"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/start_record"
+		        android:layout_alignParentLeft="true" 
+		        />
+		    <Button
+		        android:id="@+id/resetText"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/reset_text"
+		        android:layout_alignParentRight="true"
+		        />
+		</RelativeLayout>
+	    <TextView 
+	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:text="@string/start_record" 
+	        android:text="발음하라고 주어진 문장"
 	        />
-	    <Button
-	        android:id="@+id/resetText"
-	        android:layout_width="wrap_content"
+	    <TextView 
+	        android:id="@+id/sentenceText"
+	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:text="@string/reset_text"
+	        android:text=""
+	        android:textStyle="bold"
+	        android:textColor="#ff0000cd"
+	        />
+	    <TextView 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text="발음한 문장"
 	        />
 	    <TextView 
 	        android:id="@+id/recogText"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:text=""
+	        android:textColor="#ffff0000"
+	        />
+	    <TextView 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text="유사도 점수"
+	        />
+	    <TextView 
+	        android:id="@+id/rateText"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text=""
+	        android:textColor="#ffffd700"
+	        android:textStyle = "bold"
 	        />
 	</LinearLayout>
 </RelativeLayout>
