@@ -3,6 +3,7 @@ package com.hellojackcode.superstartongue;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
@@ -15,23 +16,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
-	private final int GOOGLE_STT = 1000;
+	private final int SST_SPH = 1000;
 	protected TextView recogText;
+	public Context mContext = null;		// 메인 액티비티값을 저장 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		mContext = this;
 		setContentView(R.layout.activity_main);
 	
 		Button startRecordBtn = (Button) findViewById(R.id.startRecordBtn);
 		startRecordBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-				i.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, getPackageName());
-				i.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "ko-KR");
-				i.putExtra(RecognizerIntent.EXTRA_PROMPT, "읽어봐바");
-				
-				startActivityForResult(i, GOOGLE_STT);
+				startActivityForResult(new Intent(mContext, SpeechActivity.class), SST_SPH);
 			}
 		});
 		
@@ -45,10 +43,10 @@ public class MainActivity extends Activity {
 		});
 		
 	}
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if(resultCode == RESULT_OK && (requestCode == GOOGLE_STT)) {
+		if(resultCode == RESULT_OK && (requestCode == SST_SPH)) {
 			showRecognizedText(data);		// 결과를 텍스트로 뿌려줌.
 		} else {
 			String msg = null;
@@ -89,7 +87,7 @@ public class MainActivity extends Activity {
 
 	private void showRecognizedText(Intent data) {
 		recogText = (TextView) findViewById(R.id.recogText);
-		String key = RecognizerIntent.EXTRA_RESULTS;
+		String key = SpeechRecognizer.RESULTS_RECOGNITION;
 		ArrayList<String> mResult;
 		mResult = data.getStringArrayListExtra(key);
 		String[] result = new String[mResult.size()];
@@ -98,7 +96,7 @@ public class MainActivity extends Activity {
 			recogText.append(result[i] + "\n");
 		}
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
