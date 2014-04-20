@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+
 public class MainActivity extends Activity {
 	private final int SST_SPH = 1000;
 	protected TextView recogText;
@@ -40,15 +42,6 @@ public class MainActivity extends Activity {
 		sentenceText = (TextView) findViewById(R.id.sentenceText);
 		sentenceText.setText(getSentence());
 		rateText = (TextView) findViewById(R.id.rateText);
-		
-		// 초기화 버튼 
-		Button resetText = (Button) findViewById(R.id.resetText);
-		resetText.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				recogText.setText("");
-			}
-		});
-		
 	}
 	
 	// 발음할 문자열을 가져 옴(추후에 클래스로 떼어내야 할 듯)
