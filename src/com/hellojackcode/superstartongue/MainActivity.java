@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity {
 	private final int SST_SPH = 1000;
 	protected TextView recogText;
 	protected TextView sentenceText;
@@ -41,7 +41,6 @@ public class MainActivity extends Activity {
 		recogText = (TextView) findViewById(R.id.recogText);
 		sentenceText = (TextView) findViewById(R.id.sentenceText);
 		sentenceText.setText(getSentence());
-		rateText = (TextView) findViewById(R.id.rateText);
 	}
 	
 	// 발음할 문자열을 가져 옴(추후에 클래스로 떼어내야 할 듯)
