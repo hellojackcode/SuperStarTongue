@@ -14,11 +14,13 @@
         >
         
         <TextView
+            android:id="@+id/stage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/stage"
-            android:textSize="40sp"
+            android:textSize="60sp"
             android:textColor="#ffffa500"
+            android:paddingTop="50dp"
             android:singleLine="true"
             android:layout_gravity="center"
         />

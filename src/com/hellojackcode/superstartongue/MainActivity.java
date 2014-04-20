@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.speech.SpeechRecognizer;
 import android.view.Menu;
@@ -29,6 +30,9 @@ public class MainActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		mContext = this;
 		setContentView(R.layout.activity_main);
+		
+		TextView stage = (TextView)findViewById(R.id.stage);
+		stage.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/NanumPen.otf"));
 		
 		// 발음하기 버튼 
 		Button startRecordBtn = (Button) findViewById(R.id.startRecordBtn);

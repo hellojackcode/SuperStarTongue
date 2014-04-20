@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 /*
  * App 전체에서 나눔폰트를 사용하도록 함
+ * 내용은 http://androi.tistory.com/99 를 참고할 것. 
  */
 
 public class BaseActivity extends Activity {
@@ -21,9 +22,6 @@ public class BaseActivity extends Activity {
             //mTypeface = Typeface.MONOSPACE; // 내장 폰트 사용
         }
         setGlobalFont(getWindow().getDecorView());
-        // 또는
-        // View view = findViewById(android.R.id.content);
-        // setGlobalFont(view);
     }
  
     private void setGlobalFont(View view) {
